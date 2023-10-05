@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage("showMenuBarExtra") private var showMenuBarExtra = true
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        Toggle(isOn: $showMenuBarExtra, label: {
+            Text("Always show menu")
+        })
+        .toggleStyle(.switch)
+        
     }
 }
 
