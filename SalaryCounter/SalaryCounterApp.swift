@@ -14,18 +14,18 @@ class Counter: ObservableObject {
     @Published var isCounting = false
     
     private var timer: Timer?
-    
+    private var timeInterval =  5.0
     
     func startCounter(){
         self.sum = 0
         self.isCounting = true
         timer?.invalidate()
         
-        timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true, block: { _ in
+        timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { _ in
             let ratePerSecond = self.salary / 3600.0
             print("INCREMENTING \(ratePerSecond) \(self.salary)")
 
-            self.sum += ratePerSecond * 10
+            self.sum += ratePerSecond * self.timeInterval
         })
     }
     
